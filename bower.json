@@ -1,0 +1,21 @@
+{
+  "name": "thestrongelement.com",
+  "version": "0.0.1",
+  "homepage": "https://github.com/thestrongelement/thestrongelement.com",
+  "authors": [
+    "www@thestrongelement.com"
+  ],
+  "description": "It's handled!",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "w3cstyles": "benschwarz/w3c-spec-styles"
+  }
+}
