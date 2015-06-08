@@ -1,0 +1,37 @@
+/*
+"lato"  		  weight style
+Hairline	      100	normal	
+Hairline Italic	100 italic	
+Thin	          200	normal	
+Thin Italic	    200	italic	
+Light	          300	normal	
+Light Italic    300	italic	
+Regular	        400	normal	
+Italic	        400	italic	
+Medium	        500	normal
+
+"courier-prime"
+              weight style
+Regular         400	normal	 
+Italic          400	italic	
+Bold            700	normal	
+Bold Italic     700	italic
+*/
+
+body {
+  font-family: "lato", sans-serif;
+  margin: 0;
+}
+h1 {
+  padding: 20px 30px;
+  background-color: #D93B00;
+  display: inline-block;
+}
+code { color: #D93B00; color: white; }
+code, dfn, samp {
+  font-family: "courier-prime", monospace;
+}
+strong {
+ font-weight: 700;
+ text-shadow: none;
+}
