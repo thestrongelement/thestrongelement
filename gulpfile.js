@@ -3,6 +3,9 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var del = require('del');
 var browserSync = require('browser-sync');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+
 var server;
 
 var src = 'src';
@@ -28,19 +31,35 @@ gulp.task('html', function() {
 		.pipe(gulp.dest(output))
 });
 
+gulp.task('scripts', function(){
+  var b = browserify({
+  	debug: false	
+  });
+  b.add('./src/js/app.js');
+  return b.bundle().on('error', handleError)
+    .pipe(source('thestrongelement.js'))
+    .pipe(gulp.dest(output + '/js'))
+});
+
 gulp.task('build', function (done) {
-  runSequence('clean', 'public', 'html', function () {
+  runSequence('clean', 'public', 'scripts', 'html', function () {
   	done();
   	console.log('thestrongelement.com v' + pkg.version + ' build is complete.')
   });
 });
 
-gulp.task('serve', function () {
+gulp.task('watch', function() {
+  gulp.watch('src/**/*.html', ['html']);
+  gulp.watch('src/**/*.css', ['html']);
+  gulp.watch('src/js/**/*.js', ['scripts']);
+});
+
+gulp.task('serve', ['watch'], function () {
   server = browserSync({
     notify: false,
     port: 9000,
     server: {
-      baseDir: [src],
+      baseDir: [output],
       routes: {
         '/bower_components': ''
       }
@@ -61,6 +80,21 @@ gulp.task('deploy', ['build'], function () {
 
 
 gulp.task('default', function (done) {
-  gulp.start('build');
-  gulp.start('serve');
+  runSequence('build', 'serve', function () {
+  	done();
+  	console.log('thestrongelement.com v' + pkg.version + ' is running.')
+  });
 });
+
+function reload() {
+  if (server) {
+    return browserSync.reload({ stream: true });
+  }
+  return $.util.noop();
+}
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
+
+
