@@ -59,8 +59,8 @@ gulp.task('deploy', ['build'], function () {
 		.pipe($.sftp(opts));
 });
 
+
 gulp.task('default', function (done) {
   gulp.start('build');
   gulp.start('serve');
-  
 });
