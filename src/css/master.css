@@ -19,19 +19,41 @@ Bold Italic     700	italic
 */
 
 body {
+/*  font-family: "lato", sans-serif;*/
   font-family: "lato", sans-serif;
-  margin: 0;
+  padding: 50px;
+  background-color: #D93B00;
+  font-size: 20px;
+}
+section {
+  
 }
 h1 {
-  padding: 20px 30px;
-  background-color: #D93B00;
-  display: inline-block;
+
 }
-code { color: #D93B00; color: white; }
+p {
+	font-size: 0.9em;
+}
 code, dfn, samp {
   font-family: "courier-prime", monospace;
 }
-strong {
- font-weight: 700;
- text-shadow: none;
+
+
+#the-strong-element {
+	font-size: 1.5em;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	line-height: 1.0;
+}
+#the-strong-element strong {
+	font-weight: 700;
+	text-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
+}
+#the-strong-element code {
+	color: #D93B00; 
+	color: white;
+}
+#the-tag-line {
+
+
 }

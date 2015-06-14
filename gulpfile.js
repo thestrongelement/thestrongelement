@@ -29,6 +29,7 @@ gulp.task('html', function() {
     .pipe(assets.restore())
     .pipe($.useref())
 		.pipe(gulp.dest(output))
+    .pipe(reload())
 });
 
 gulp.task('scripts', function(){
@@ -39,6 +40,7 @@ gulp.task('scripts', function(){
   return b.bundle().on('error', handleError)
     .pipe(source('thestrongelement.js'))
     .pipe(gulp.dest(output + '/js'))
+    .pipe(reload())
 });
 
 gulp.task('build', function (done) {
