@@ -28,7 +28,7 @@ gulp.task('html', function() {
     .pipe(assets)
     .pipe(assets.restore())
     .pipe($.useref())
-		.pipe(gulp.dest(output))
+    .pipe(gulp.dest(output))
     .pipe(reload())
 });
 
@@ -63,13 +63,12 @@ gulp.task('serve', ['watch'], function () {
     server: {
       baseDir: [output],
       routes: {
-        '/bower_components': ''
+        '/bower_components': 'bower_components'
       }
     }
   });
 });
 
-  
 gulp.task('deploy', ['build'], function () {
 	var opts = {
 		host: 'thestrongelement.com',
@@ -79,7 +78,6 @@ gulp.task('deploy', ['build'], function () {
 	return gulp.src([ output +'/**/*'])
 		.pipe($.sftp(opts));
 });
-
 
 gulp.task('default', function (done) {
   runSequence('build', 'serve', function () {
@@ -98,5 +96,3 @@ function handleError(err) {
   console.log(err.toString());
   this.emit('end');
 }
-
-

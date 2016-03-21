@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/thestrongelement/thestrongelement.com",
   "authors": [
-    "www@thestrongelement.com"
+    "hello@thestrongelement.com"
   ],
   "description": "It's handled!",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "w3cstyles": "benschwarz/w3c-spec-styles"
+    "w3cstyles": "benschwarz/w3c-spec-styles",
+    "strong-css": ">=0.0.6"
   }
 }
