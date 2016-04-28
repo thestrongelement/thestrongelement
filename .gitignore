@@ -11,10 +11,13 @@ Thumbs.db
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-src/bower_components
 bower_components
-app/bower_components
+dist
+.ftppass
+build
 www
+.tmp
+*.log
 .ftppass
 goog*.html
 *.txt

@@ -1,6 +1,6 @@
 {
   "name": "thestrongelement.com",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/thestrongelement/thestrongelement.com",
   "authors": [
     "hello@thestrongelement.com"
@@ -16,7 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "w3cstyles": "benschwarz/w3c-spec-styles",
-    "strong-css": ">=0.0.6"
+    "normalize-css": "^4.0.0",
+    "bourbon": "^4.2.6",
+    "neat": "^1.7.4",
+    "w3cstyles": "benschwarz/w3c-spec-styles"
   }
 }
