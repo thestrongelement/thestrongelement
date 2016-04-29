@@ -15,7 +15,9 @@ const src = {
   public: 'public/**/*',
   scriptsToProcess: 'src/scripts/app.js',
   scriptsToWatch: 'src/scripts/**/*.js',
-  images: 'src/images/**/*',
+  images: 'src/images/',
+  imagesToProcess: 'src/images/**/*',
+  svgs: 'src/images/**/*.svg',
   stylesToWatch: 'src/styles/**/*',
   stylesToProcess: ['src/styles/*.scss', '!src/styles/debug.scss'],
   stylesToInclude: ['src/styles/'],
@@ -48,14 +50,16 @@ var page;
 
 // HELPERS
 // get key from file name, e.g. index.html returns index
-function getPageKey(file) {
+function getFileKey(file) {
   var filePath = path.basename(file.path);
-  return filePath.replace(/\.[^/.]+$/, "");
+  var key = filePath.replace(/\.[^/.]+$/, "");
+  return key;
 }
+
 var getAppData = function(file) {
   try {
     //set menu states
-    var selectedId = getPageKey(file);
+    var selectedId = getFileKey(file);
     app.menu.forEach(function (obj) {
       obj.selected = obj.id === selectedId || selectedId.indexOf(obj.id) !== -1;
     });
@@ -67,7 +71,7 @@ var getAppData = function(file) {
 };
 var getPageData = function(file) {
   try {
-    var key = getPageKey(file);
+    var key = getFileKey(file);
     page = require('./' + src.data + key + '.json');
     page.id = key;
     return { page: page };
@@ -95,7 +99,7 @@ gulp.task('html', function () {
     .pipe($.data(getAppData))
     .pipe($.data(getPageData))
     .pipe(nunjucks({
-      searchPaths: [src.layouts, src.includes, src.macros],
+      searchPaths: [src.layouts, src.includes, src.macros, src.images],
       locals: {
         date: date
       }
@@ -138,12 +142,37 @@ gulp.task('css', function () {
 });
 
 // process images
-gulp.task('images', function() {
-	gulp.src(src.images)
+gulp.task('images', ['svgs'], function() {
+	gulp.src(src.imagesToProcess)
 		.pipe($.if(PRODUCTION, $.imagemin({
-  		progressive: true,
-  		svgoPlugins: [{cleanupIDs: true, removeTitle: true}]
+  		progressive: true
 		})))
+		.pipe(gulp.dest(dist.images))
+});
+
+// optimize vectors
+gulp.task('svgs', function() {
+	gulp.src(src.svgs)
+	  .pipe($.svgmin({
+            plugins: [{
+              removeTitle: true
+            }, {
+              margePaths: false
+            },{
+                addClassesToSVGElement: {
+                  className: 'svg__'
+                }
+            }, {
+                cleanupNumericValues: {
+                    floatPrecision: 2
+                }
+            }, {
+                convertColors: {
+                    names2hex: true,
+                    rgb2hex: false
+                }
+            }]
+        }))
 		.pipe(gulp.dest(dist.images))
 });
 
