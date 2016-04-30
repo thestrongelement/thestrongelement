@@ -1,0 +1,37 @@
+$colors: (
+    white: #ffffff,
+    black: #000000,
+    coolgray: #474F54,
+    darkgray: #6F6F6F,
+    mediumgray: #AFAFAF,
+    gray: #EE00EE,
+    lightgray: #F5F5F5,
+    offwhite: #F9F9F9,
+    midnightblue: #114958,
+    aqua: #1E7E98,
+    plum: #820068,
+    hibiscus: #E80134,
+    midnightblack: #211F1F,
+    red: #D81E17,
+    green: #1F7A18,
+    yellow: #FFA500,
+    brightblue: #3AB7D8,
+    zack: orange,
+    jeff: cyan
+) !global;
+
+//vendor vars
+$ms-base: 24px 30px !global;
+$ms-ratio: $fourth !global; //1.333
+
+
+$type: (
+  xxs: ms(-2) 1.77685644, //13.507
+  xs: ms(0) 1.5,          //16
+  s: ms(1) 1.33333333,    //18.005
+  reg: ms(3) 1.5,         //24
+  m: ms(5) 1.12528132,    //31.992
+  l: ms(7) 1.12557158,    //42.645
+  xl: ms(9) 1.26687988,   //56.846
+  xxl: ms(11) 1.10853041  //75.776
+) !global;

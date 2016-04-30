@@ -20,7 +20,7 @@ const src = {
   svgs: 'src/images/**/*.svg',
   stylesToWatch: 'src/styles/**/*',
   stylesToProcess: ['src/styles/*.scss', '!src/styles/debug.scss'],
-  stylesToInclude: ['src/styles/'],
+  stylesToInclude: ['src/styles/','bower_components/strong-css/css/'],
   fonts: 'src/fonts',
   html: 'src/templates/**/*.html',
   layouts: 'src/templates/layouts/',
