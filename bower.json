@@ -19,7 +19,9 @@
     "normalize-css": "^4.0.0",
     "bourbon": "^4.2.6",
     "neat": "^1.7.4",
-    "w3cstyles": "benschwarz/w3c-spec-styles",
-    "strong-css": "thestrongelement/strong-css"
+    "w3cstyles": "benschwarz/w3c-spec-styles"
+  },
+  "devDependencies": {
+    "strong-css": "^0.0.7"
   }
 }
