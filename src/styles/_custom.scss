@@ -56,7 +56,7 @@ body {
   background-color: white;
 
 	animation-name: fade;
-	animation-duration: 10s;
+	animation-duration: 60s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
@@ -93,6 +93,10 @@ p {
   text-align: center;
   svg {
     width: 100%;
+   @media screen and (min-width: 1024px) {
+      width: 80%;
+
+  }
   }
   path {
    // fill: white;

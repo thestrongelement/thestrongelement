@@ -104,6 +104,9 @@ gulp.task('html', function () {
         date: date
       }
     }))
+    .pipe($.if(PRODUCTION, $.htmlmin({
+      collapseWhitespace: true
+    })))
     .pipe(gulp.dest(dist.path))
     .pipe(browserSync.stream());
 });
